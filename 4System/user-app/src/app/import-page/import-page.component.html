@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <form id="contactForm" action="/users" target="_self">
+            <div class="form-floating mb-3">
+                <label for="formFileLg" class="form-label">Załącz plik z bazą danych</label><br><br><br>
+
+                <input class="form-control form-control-lg" id="formFileLg" type="file" (change)="uploadFile($event)">
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Status Importu</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+				
+				<div class="input-group">
+					<h3> {{responseBody}}</h3>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Przejdź dalej</button>
+	</div>
+</ng-template>
+
+<button [ngClass]="buttonClasses" class="btn btn-lg btn-outline-dark" (click)="open(content)">Sprawdź status przesyłania</button>
+
+<hr />
+
+<pre>{{ closeResult }}</pre>

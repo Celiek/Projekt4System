@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./users-page.component.css">       
+</head>
+<body>
+    <input type="text" placeholder="Search" [formControl]="searchControl">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+          </ng-container>
+        
+         
+          <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Surname</th>
+            <td mat-cell *matCellDef="let user">{{ user.surname }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="login">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Login</th>
+            <td mat-cell *matCellDef="let user">{{ user.login }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="fullName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>fullName</th>
+            <td mat-cell *matCellDef="let user">{{ user.fullName }}</td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div>
+        <button class="btn btn-primary" [disabled]="currentPage <= 0" (click)="goToPage(currentPage = currentPage-1)">Previous</button>
+        <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">Next</button>
+      </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
